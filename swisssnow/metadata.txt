@@ -1,0 +1,25 @@
+[general]
+name            = SwissSnow
+qgisMinimumVersion = 3.22
+description     = Seasonal avalanche-susceptibility mapping from swissALTI3D terrain and Open-Meteo snow
+version         = 0.2.0
+author          = Nicolò Trojan
+email           = t5ybnwvr8x@privaterelay.appleid.com
+about           = SwissSnow produces a 4-class avalanche-susceptibility map for an area of
+                  interest in Switzerland. It combines morphological terrain factors (slope,
+                  aspect, profile curvature) from the swissALTI3D 2 m DTM with a seasonal
+                  snow-load factor from the Open-Meteo historical archive, plus optional
+                  elevation snow-lapse and wind-loading corrections. A second tool validates
+                  the result against SLF avalanche-accident data.
+                  Target users: GIS analysts, natural-hazard and spatial-planning
+                  professionals in Switzerland.
+                  Not affiliated with SLF or swisstopo; not for operational safety decisions.
+tracker         = https://github.com/ntrojan/swisssnow/issues
+repository      = https://github.com/ntrojan/swisssnow
+hasProcessingProvider = yes
+tags            = switzerland, swisstopo, swissALTI3D, avalanche, snow, susceptibility, terrain, hazard, DEM
+homepage        = https://github.com/ntrojan/swisssnow
+category        = Analysis
+icon            = resources/icon.png
+experimental    = True
+deprecated      = False
