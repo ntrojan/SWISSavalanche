@@ -28,7 +28,7 @@ from qgis.core import (
     QgsProject,
     QgsRendererCategory,
 )
-from qgis.PyQt.QtGui import QColor
+from qgis.PyQt.QtGui import QColor, QIcon
 
 from .swissavalanche_algorithm import (
     _ensure_core_importable, CLASS_COLORS, CLASS_LABELS, _KEEP_ALIVE,
@@ -74,6 +74,11 @@ class SwissAvalancheValidateAlgorithm(QgsProcessingAlgorithm):
 
     def groupId(self):
         return "swissavalanche"
+
+    def icon(self):
+        return QIcon(
+            os.path.join(os.path.dirname(__file__), "resources", "icon.png")
+        )
 
     def shortHelpString(self):
         return (

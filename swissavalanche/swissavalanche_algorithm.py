@@ -41,7 +41,7 @@ from qgis.core import (
     QgsSingleBandPseudoColorRenderer,
     QgsWkbTypes,
 )
-from qgis.PyQt.QtGui import QColor
+from qgis.PyQt.QtGui import QColor, QIcon
 
 # Susceptibility palette (mirrors swissavalanche_core.composite CLASS_COLORS/LABELS).
 CLASS_COLORS = {1: "#1a9850", 2: "#a6d96a", 3: "#fdae61", 4: "#d73027"}
@@ -166,6 +166,11 @@ class SwissAvalancheAlgorithm(QgsProcessingAlgorithm):
 
     def groupId(self):
         return "swissavalanche"
+
+    def icon(self):
+        return QIcon(
+            os.path.join(os.path.dirname(__file__), "resources", "icon.png")
+        )
 
     def shortHelpString(self):
         return (
