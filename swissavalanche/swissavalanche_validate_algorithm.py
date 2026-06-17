@@ -1,10 +1,10 @@
 """
-SwissSnow validation Processing algorithm.
+SwissAvalanche validation Processing algorithm.
 
 Validates a susceptibility map against observed avalanche incidents: it samples
 the susceptibility class/score at each incident and reports the frequency ratio
 per class (FR>1 = the class is over-represented among incidents = good
-discrimination) plus a success-rate / lift figure. Wraps swisssnow_core.validate.
+discrimination) plus a success-rate / lift figure. Wraps swissavalanche_core.validate.
 """
 
 import json
@@ -30,7 +30,7 @@ from qgis.core import (
 )
 from qgis.PyQt.QtGui import QColor
 
-from .swisssnow_algorithm import (
+from .swissavalanche_algorithm import (
     _ensure_core_importable, CLASS_COLORS, CLASS_LABELS, _KEEP_ALIVE,
 )
 
@@ -56,7 +56,7 @@ class _IncidentsPointStyler(QgsProcessingLayerPostProcessorInterface):
         layer.triggerRepaint()
 
 
-class SwissSnowValidateAlgorithm(QgsProcessingAlgorithm):
+class SwissAvalancheValidateAlgorithm(QgsProcessingAlgorithm):
     INCIDENTS = "INCIDENTS"
     FETCH_SLF = "FETCH_SLF"
     CLASS_RASTER = "CLASS_RASTER"
@@ -70,10 +70,10 @@ class SwissSnowValidateAlgorithm(QgsProcessingAlgorithm):
         return "Validate against incidents"
 
     def group(self):
-        return "SwissSnow"
+        return "SwissAvalanche"
 
     def groupId(self):
-        return "swisssnow"
+        return "swissavalanche"
 
     def shortHelpString(self):
         return (
@@ -96,7 +96,7 @@ class SwissSnowValidateAlgorithm(QgsProcessingAlgorithm):
             "contain several past accidents.</i></p>")
 
     def createInstance(self):
-        return SwissSnowValidateAlgorithm()
+        return SwissAvalancheValidateAlgorithm()
 
     def initAlgorithm(self, config=None):
         self.addParameter(QgsProcessingParameterFeatureSource(
@@ -115,7 +115,7 @@ class SwissSnowValidateAlgorithm(QgsProcessingAlgorithm):
 
     def processAlgorithm(self, parameters, context, feedback):
         _ensure_core_importable()
-        from swisssnow_core import validate as ssv
+        from swissavalanche_core import validate as ssv
 
         class_layer = self.parameterAsRasterLayer(parameters, self.CLASS_RASTER, context)
         score_layer = self.parameterAsRasterLayer(parameters, self.SCORE_RASTER, context)

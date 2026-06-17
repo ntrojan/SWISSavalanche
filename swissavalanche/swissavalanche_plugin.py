@@ -1,17 +1,17 @@
-"""SwissSnow plugin: registers the Processing provider with QGIS."""
+"""SwissAvalanche plugin: registers the Processing provider with QGIS."""
 
 from qgis.core import QgsApplication
 
-from .swisssnow_provider import SwissSnowProvider
+from .swissavalanche_provider import SwissAvalancheProvider
 
 
-class SwissSnowPlugin:
+class SwissAvalanchePlugin:
     def __init__(self, iface):
         self.iface = iface
         self.provider = None
 
     def initProcessing(self):
-        self.provider = SwissSnowProvider()
+        self.provider = SwissAvalancheProvider()
         QgsApplication.processingRegistry().addProvider(self.provider)
 
     def initGui(self):

@@ -1,6 +1,6 @@
 """
 ========================================================================
-  SWISSSNOW · 03_snow.py
+  SWISSAVALANCHE · 03_snow.py
   Snow factor module
   ----------------------------------------------------------------------
   Queries the Open-Meteo Historical Weather API for snow variables
@@ -638,7 +638,7 @@ def save_snow_stats(stats: SnowStats, factor: SnowFactor, out_path: Path,
 
 def _cli():
     parser = argparse.ArgumentParser(
-        description="SwissSnow · fetch snow data and compute snow_factor"
+        description="SwissAvalanche · fetch snow data and compute snow_factor"
     )
     parser.add_argument("--lat",   type=float, required=True,  help="Latitude (WGS84)")
     parser.add_argument("--lon",   type=float, required=True,  help="Longitude (WGS84)")

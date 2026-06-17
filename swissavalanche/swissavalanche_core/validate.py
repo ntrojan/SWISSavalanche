@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-SwissSnow · 05_validate.py
+SwissAvalanche · 05_validate.py
 
 Validate the susceptibility map against observed avalanche incidents.
 
@@ -77,7 +77,7 @@ def fetch_slf_incidents(
     start, end : str, optional
         Keep only accidents with date in [start, end] (ISO YYYY-MM-DD).
     cache_dir : Path, optional
-        Where to cache the CSV (default ~/.swisssnow). Re-used unless `refresh`.
+        Where to cache the CSV (default ~/.swissavalanche). Re-used unless `refresh`.
     refresh : bool
         Force a fresh download even if a cached copy exists.
 
@@ -89,7 +89,7 @@ def fetch_slf_incidents(
     import pandas as pd
     import requests
 
-    cache_dir = Path(cache_dir) if cache_dir else Path.home() / ".swisssnow"
+    cache_dir = Path(cache_dir) if cache_dir else Path.home() / ".swissavalanche"
     cache_dir.mkdir(parents=True, exist_ok=True)
     csv_path = cache_dir / "slf_avalanche_accidents.csv"
 
@@ -341,7 +341,7 @@ def run_pipeline(base: Path, incidents: Path, lon_col: str = "lon",
 
 def _cli():
     parser = argparse.ArgumentParser(
-        description="SwissSnow · validate susceptibility against avalanche incidents")
+        description="SwissAvalanche · validate susceptibility against avalanche incidents")
     parser.add_argument("--base", type=str, default=".",
                         help="Project root directory (default: current directory)")
     parser.add_argument("--incidents", type=str, required=True,

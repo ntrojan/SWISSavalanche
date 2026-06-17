@@ -1,5 +1,5 @@
 """
-SwissSnow · orchestration layer.
+SwissAvalanche · orchestration layer.
 
 `run_analysis` chains the four pipeline stages (DTM → morphology → snow →
 composite) into a single call that any front-end (QGIS plugin, web app, CLI)
@@ -114,7 +114,7 @@ def run_analysis(
     progress: Optional[ProgressCb] = None,
 ) -> AnalysisResult:
     """
-    Run the full SwissSnow analysis for one AOI and season.
+    Run the full SwissAvalanche analysis for one AOI and season.
 
     Parameters
     ----------
@@ -170,7 +170,7 @@ def run_analysis(
     # ── 1. DTM ──────────────────────────────────────────────────────
     p(0.05, "Downloading and clipping terrain (swissALTI3D)…")
     if tile_cache_dir is None:
-        tile_cache_dir = Path.home() / ".swisssnow" / "tiles"
+        tile_cache_dir = Path.home() / ".swissavalanche" / "tiles"
     dtm_path = dtm.run_pipeline(
         base=base, aoi_path=aoi_path, target_res=target_res,
         keep_tiles=keep_tiles, tiles_dir=Path(tile_cache_dir),

@@ -1,7 +1,7 @@
 """
-SwissSnow Processing algorithm.
+SwissAvalanche Processing algorithm.
 
-Thin QGIS wrapper around swisssnow_core.run_analysis: it collects parameters
+Thin QGIS wrapper around swissavalanche_core.run_analysis: it collects parameters
 from the standard Processing dialog, drives the shared engine, maps progress
 onto the QGIS feedback object, and loads the result layers into the project.
 
@@ -43,7 +43,7 @@ from qgis.core import (
 )
 from qgis.PyQt.QtGui import QColor
 
-# Susceptibility palette (mirrors swisssnow_core.composite CLASS_COLORS/LABELS).
+# Susceptibility palette (mirrors swissavalanche_core.composite CLASS_COLORS/LABELS).
 CLASS_COLORS = {1: "#1a9850", 2: "#a6d96a", 3: "#fdae61", 4: "#d73027"}
 CLASS_LABELS = {1: "Low", 2: "Moderate", 3: "High", 4: "Very high"}
 
@@ -112,25 +112,25 @@ class _ZonesVectorStyler(QgsProcessingLayerPostProcessorInterface):
 
 
 def _ensure_core_importable():
-    """Make `swisssnow_core` importable, whether bundled or used from the repo."""
+    """Make `swissavalanche_core` importable, whether bundled or used from the repo."""
     try:
-        import swisssnow_core  # noqa: F401
+        import swissavalanche_core  # noqa: F401
         return
     except ImportError:
         pass
-    # Bundled: swisssnow_core sits next to this file (see build_plugin.py).
+    # Bundled: swissavalanche_core sits next to this file (see build_plugin.py).
     # Dev: it sits one level up from qgis_plugin/.
     here = Path(__file__).resolve().parent
     for candidate in (here, here.parent):
-        if (candidate / "swisssnow_core" / "__init__.py").exists():
+        if (candidate / "swissavalanche_core" / "__init__.py").exists():
             sys.path.insert(0, str(candidate))
             return
     raise QgsProcessingException(
-        "swisssnow_core package not found. Bundle it inside the plugin folder "
+        "swissavalanche_core package not found. Bundle it inside the plugin folder "
         "or install it on the QGIS Python path.")
 
 
-class SwissSnowAlgorithm(QgsProcessingAlgorithm):
+class SwissAvalancheAlgorithm(QgsProcessingAlgorithm):
     AOI_LAYER = "AOI_LAYER"
     AOI_EXTENT = "AOI_EXTENT"
     SNOW_MODE = "SNOW_MODE"
@@ -162,10 +162,10 @@ class SwissSnowAlgorithm(QgsProcessingAlgorithm):
         return "Avalanche susceptibility"
 
     def group(self):
-        return "SwissSnow"
+        return "SwissAvalanche"
 
     def groupId(self):
-        return "swisssnow"
+        return "swissavalanche"
 
     def shortHelpString(self):
         return (
@@ -223,7 +223,7 @@ class SwissSnowAlgorithm(QgsProcessingAlgorithm):
             "decisions.</i></p>")
 
     def createInstance(self):
-        return SwissSnowAlgorithm()
+        return SwissAvalancheAlgorithm()
 
     def initAlgorithm(self, config=None):
         # ── Area of interest (same pattern as SwissMorph) ───────────────
@@ -345,7 +345,7 @@ class SwissSnowAlgorithm(QgsProcessingAlgorithm):
 
     def processAlgorithm(self, parameters, context, feedback):
         _ensure_core_importable()
-        from swisssnow_core import run_analysis
+        from swissavalanche_core import run_analysis
         import geopandas as gpd
         from shapely.geometry import box
 
@@ -402,7 +402,7 @@ class SwissSnowAlgorithm(QgsProcessingAlgorithm):
         except QgsProcessingException:
             raise
         except Exception as e:   # surface engine errors as QGIS errors
-            raise QgsProcessingException(f"SwissSnow analysis failed: {e}")
+            raise QgsProcessingException(f"SwissAvalanche analysis failed: {e}")
 
         cls = result.stats.get("classes", {})
         feedback.pushInfo(

@@ -1,6 +1,6 @@
 """
 ========================================================================
-  SWISSSNOW · 02_morpho.py
+  SWISSAVALANCHE · 02_morpho.py
   Morphological factor computation
   ----------------------------------------------------------------------
   Reads dtm_clip.tif produced by 01_dtm.py and computes:
@@ -381,7 +381,7 @@ def run_pipeline(
 
 def _cli():
     parser = argparse.ArgumentParser(
-        description="SwissSnow · morphological factors (slope / aspect / curvature)"
+        description="SwissAvalanche · morphological factors (slope / aspect / curvature)"
     )
     parser.add_argument(
         "--base", type=str, default=".",

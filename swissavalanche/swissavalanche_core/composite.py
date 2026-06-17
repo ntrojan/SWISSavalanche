@@ -1,6 +1,6 @@
 """
 ========================================================================
-  SWISSSNOW · 04_composite.py
+  SWISSAVALANCHE · 04_composite.py
   Composite susceptibility model
   ----------------------------------------------------------------------
   Reads pre-computed morphological rasters (slope, aspect, curvature)
@@ -558,7 +558,7 @@ def run_pipeline(
 
 def _cli():
     parser = argparse.ArgumentParser(
-        description="SwissSnow · composite susceptibility model"
+        description="SwissAvalanche · composite susceptibility model"
     )
     parser.add_argument(
         "--base", type=str, default=".",

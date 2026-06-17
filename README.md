@@ -1,4 +1,4 @@
-# SwissSnow (QGIS plugin)
+# SwissAvalanche (QGIS plugin)
 
 Seasonal avalanche-susceptibility mapping for the Swiss Alps, as a QGIS
 Processing plugin. It combines morphological terrain factors (slope, aspect,
@@ -11,16 +11,16 @@ Susceptibility is not hazard: do not use it for operational safety decisions.
 
 ## Install
 
-1. Download `swisssnow.zip` (or zip the `swisssnow/` folder in this repo).
+1. Download `swissavalanche.zip` (or zip the `swissavalanche/` folder in this repo).
 2. In QGIS: Plugins > Manage and Install Plugins > Install from ZIP.
-3. Enable SwissSnow (it is flagged experimental, so tick "Show also
+3. Enable SwissAvalanche (it is flagged experimental, so tick "Show also
    experimental plugins" if needed).
 
-The `swisssnow/` folder is self-contained: the computational engine
-(`swisssnow_core`) is bundled inside it, so no extra Python packages beyond what
+The `swissavalanche/` folder is self-contained: the computational engine
+(`swissavalanche_core`) is bundled inside it, so no extra Python packages beyond what
 QGIS already ships (numpy, rasterio, geopandas, requests, GDAL) are required.
 
-## Tools (Processing toolbox > SwissSnow)
+## Tools (Processing toolbox > SwissAvalanche)
 
 ### Avalanche susceptibility
 Pick an area of interest (a polygon layer or a map extent), choose how the snow
@@ -34,7 +34,7 @@ raster, and zone polygons, all styled automatically.
   DTM tile cache folder, and the climatology settings.
 
 Needs an internet connection (terrain tiles + snow API). Downloaded DTM tiles
-are cached under `~/.swisssnow/tiles` and reused across runs.
+are cached under `~/.swissavalanche/tiles` and reused across runs.
 
 ### Validate against incidents
 Checks how well a susceptibility map discriminates real avalanche events.

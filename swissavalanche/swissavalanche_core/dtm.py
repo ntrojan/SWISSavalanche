@@ -1,6 +1,6 @@
 """
 ========================================================================
-  SWISSSNOW · 01_dtm.py
+  SWISSAVALANCHE · 01_dtm.py
   DTM acquisition and preparation
   ----------------------------------------------------------------------
   Downloads swissALTI3D 2m tiles from swisstopo STAC API, mosaics them,
@@ -438,7 +438,7 @@ def run_pipeline(
 
 def _cli():
     parser = argparse.ArgumentParser(
-        description="SwissSnow · DTM preparation (swissALTI3D)"
+        description="SwissAvalanche · DTM preparation (swissALTI3D)"
     )
     parser.add_argument(
         "--aoi", type=str, required=True,
